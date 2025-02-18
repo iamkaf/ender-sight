@@ -1,26 +1,20 @@
-package com.iamkaf.template;
+package com.iamkaf.endersight;
 
 import com.iamkaf.amber.api.core.AmberMod;
-import com.iamkaf.template.registry.CreativeModeTabs;
-import com.iamkaf.template.registry.Items;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
-public class Template extends AmberMod {
-    public static final String MOD_ID = "template";
+public class EnderSight extends AmberMod {
+    public static final String MOD_ID = "endersight";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public Template() {
+    public EnderSight() {
         super(MOD_ID);
     }
 
     public static void init() {
-        LOGGER.info("Kaf template.");
-
-        // Registries
-        Items.init();
-        CreativeModeTabs.init();
+        LOGGER.info("Ender Sight initialized...");
     }
 
     /**
