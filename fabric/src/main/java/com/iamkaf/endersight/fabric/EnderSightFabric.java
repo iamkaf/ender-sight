@@ -1,10 +1,9 @@
-package com.iamkaf.template.fabric;
+package com.iamkaf.endersight.fabric;
 
+import com.iamkaf.endersight.EnderSight;
 import net.fabricmc.api.ModInitializer;
 
-import com.iamkaf.template.Template;
-
-public final class TemplateFabric implements ModInitializer {
+public final class EnderSightFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -12,6 +11,6 @@ public final class TemplateFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        Template.init();
+        EnderSight.init();
     }
 }
