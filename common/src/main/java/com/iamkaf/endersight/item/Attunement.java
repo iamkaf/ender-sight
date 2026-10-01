@@ -1,6 +1,7 @@
 package com.iamkaf.endersight.item;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.GlobalPos;
@@ -20,11 +21,13 @@ import java.util.UUID;
  * use the factory methods.
  */
 public record Attunement(Optional<GlobalPos> place, Optional<UUID> player, String playerName) {
-    public static final Codec<Attunement> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final Codec<Attunement> CODEC = RecordCodecBuilder.<Attunement>create(instance -> instance.group(
             GlobalPos.CODEC.optionalFieldOf("place").forGetter(Attunement::place),
             UUIDUtil.CODEC.optionalFieldOf("player").forGetter(Attunement::player),
             Codec.STRING.optionalFieldOf("player_name", "").forGetter(Attunement::playerName)
-    ).apply(instance, Attunement::new));
+    ).apply(instance, Attunement::new)).validate(attunement -> attunement.place().isPresent() != attunement.player().isPresent()
+            ? DataResult.success(attunement)
+            : DataResult.error(() -> "Attunement needs exactly one of place and player"));
 
     public static final StreamCodec<ByteBuf, Attunement> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.optional(GlobalPos.STREAM_CODEC), Attunement::place,

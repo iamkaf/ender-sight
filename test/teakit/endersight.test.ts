@@ -47,7 +47,8 @@ describe("Ender Sight", () => {
     const { client, commands, player, runtime, entities } = ctx;
     const origin = await arena(ctx, 40);
     await commands.batch([
-      "/gamemode creative @s",
+      // Survival, so attuning spends the plain eye it converts.
+      "/gamemode survival @s",
       "/item replace entity @s weapon.mainhand with minecraft:ender_eye 2",
       `/setblock ${origin.x + 3} ${Y} ${origin.z + 2} minecraft:lodestone`,
     ]);
@@ -192,6 +193,20 @@ describe("Ender Sight", () => {
 
     await commands.run(`/setblock ${eye.x} ${eye.y} ${eye.z} endersight:watchers_eye[facing=west,mode=players,power=14]`);
     await expect(() => powerOf(ctx, eye)).toEventuallyEqual("0", { timeout: "3s" });
+  });
+
+  test("Watcher's Eye drops itself when mined with a pickaxe", async (ctx) => {
+    const { commands, player, entities } = ctx;
+    const origin = await arena(ctx, 220);
+    const eye = pos(origin.x + 2, Y, origin.z + 2);
+    await commands.batch([
+      "/gamemode survival @s",
+      `/setblock ${eye.x} ${eye.y} ${eye.z} endersight:watchers_eye[facing=east]`,
+      "/item replace entity @s weapon.mainhand with minecraft:diamond_pickaxe",
+    ]);
+    await player.mine(eye);
+    const dropped = await entities.query({ origin: eye, radius: 4, item: "endersight:watchers_eye" }).waitForCount(1, { timeout: "5s" });
+    expect(dropped.length).toBe(1);
   });
 
   test("Watcher's Eye alerts the player who placed it", async (ctx) => {

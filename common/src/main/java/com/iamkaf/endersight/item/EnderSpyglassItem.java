@@ -30,8 +30,16 @@ public class EnderSpyglassItem extends SpyglassItem {
     public static final int MIN_SCOPE_TICKS = 10;
     public static final int COOLDOWN_TICKS = 40;
 
+    /** Vanilla stops scoping after a minute; the Ender Spyglass holds until the player lets go, like a bow. */
+    private static final int USE_TICKS = 72000;
+
     public EnderSpyglassItem(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity user) {
+        return USE_TICKS;
     }
 
     /** Where letting go would take the player. Shared by the server teleport and the client scope overlay. */

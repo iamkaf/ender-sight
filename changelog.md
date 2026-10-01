@@ -13,13 +13,13 @@ Ender Sight is now a mod about Ender items that work by sight.
 
 ### Added
 
-- Added the Ender Spyglass. Scope a spot and let go to teleport there for one Ender Pearl. Its scope shows when the jump is ready and how far it goes.
-- Added Attuned Eyes. Sneak-use an Eye of Ender on a block or player, and when thrown it flies there instead of to a stronghold.
-- Added the Everlasting Eye, an Eye of Ender that never shatters. It can be attuned too.
-- Added Ender Marks. Mark a block or mob through walls for yourself and nearby players carrying Ender Marks. Marked players see who spotted them.
-- Added the Seer's Pearl. Throw it to mark every creature near where it lands.
-- Added the Watcher's Eye, a block that outputs redstone while it sees players, hostile mobs, or anything alive, and can alert the player who placed it.
-- Added the Ender Veil, a snack that stops Endermen from reacting when you look at them.
+- Added the Ender Spyglass, which teleports you to the spot you scope.
+- Added Attuned Eyes, Eyes of Ender that fly to a chosen block or player.
+- Added the Everlasting Eye, an Eye of Ender that never shatters.
+- Added Ender Marks, which mark a block or mob through walls.
+- Added the Seer's Pearl, which marks every creature near where it lands.
+- Added the Watcher's Eye, a redstone block that watches for players or mobs.
+- Added the Ender Veil, a snack that hides your gaze from Endermen.
 - Added Forge support.
 
 ### Changed

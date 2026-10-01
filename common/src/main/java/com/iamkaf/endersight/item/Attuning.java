@@ -55,7 +55,7 @@ public final class Attuning {
         attuned.set(ModRegistry.ATTUNEMENT.get(), attunement);
         // Read before adding: Inventory.add empties the stack it was given.
         Item eye = attuned.getItem();
-        held.shrink(1);
+        held.consume(1, player);
         if (held.isEmpty()) {
             player.setItemInHand(hand, attuned);
         } else if (!player.getInventory().add(attuned)) {

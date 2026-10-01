@@ -61,7 +61,7 @@ public final class Marks {
             int delayTicks,
             boolean ping
     ) {
-        schedule(delayTicks, () -> {
+        schedule(viewer, delayTicks, () -> {
             UUID id = UUID.randomUUID();
             Billboards.show(viewer, marker(anchor, id, ARRIVAL_TICKS)
                     .translateFromTo(new Vec3(0.0D, DROP, 0.0D), Vec3.ZERO, Easing.EASE_OUT_BACK)
@@ -70,7 +70,7 @@ public final class Marks {
             if (ping) {
                 ping(viewer, anchor, 2.2D);
             }
-            schedule(ARRIVAL_TICKS, () -> {
+            schedule(viewer, ARRIVAL_TICKS, () -> {
                 int hold = ticks - ARRIVAL_TICKS;
                 // The ease-in fade keeps the mark solid for most of its life and lets it go at the end.
                 Billboards.show(viewer, marker(anchor, id, hold).fadeOut(Easing.EASE_IN_CUBIC));
@@ -125,11 +125,11 @@ public final class Marks {
         };
     }
 
-    private static void schedule(int delayTicks, Runnable action) {
+    private static void schedule(ServerPlayer viewer, int delayTicks, Runnable action) {
         if (delayTicks <= 0) {
             action.run();
         } else {
-            SCHEDULED.add(new Scheduled(delayTicks, action));
+            SCHEDULED.add(new Scheduled(viewer, delayTicks, action));
         }
     }
 
@@ -139,6 +139,10 @@ public final class Marks {
         }
         List<Runnable> due = new ArrayList<>();
         SCHEDULED.removeIf(scheduled -> {
+            // A viewer who left, or whose server stopped, no longer needs the mark.
+            if (scheduled.viewer.hasDisconnected()) {
+                return true;
+            }
             if (--scheduled.ticksLeft > 0) {
                 return false;
             }
@@ -150,10 +154,12 @@ public final class Marks {
     }
 
     private static final class Scheduled {
+        private final ServerPlayer viewer;
         private int ticksLeft;
         private final Runnable action;
 
-        private Scheduled(int ticksLeft, Runnable action) {
+        private Scheduled(ServerPlayer viewer, int ticksLeft, Runnable action) {
+            this.viewer = viewer;
             this.ticksLeft = ticksLeft;
             this.action = action;
         }

@@ -13,7 +13,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.WeakHashMap;
 
 /** Endermen ignore the gaze of a veiled player, and the player sees each ignored stare blink shut. */
@@ -23,7 +25,8 @@ public class VeiledEffect extends MobEffect {
     private static final int BLINK_TICKS = 16;
     /** Endermen re-check a stare every tick, so each one blinks at most this often. */
     private static final int BLINK_INTERVAL_TICKS = 60;
-    private static final Map<Entity, Long> LAST_BLINK = new WeakHashMap<>();
+    /** Last blink per Enderman, per player who saw it. */
+    private static final Map<Entity, Map<UUID, Long>> LAST_BLINK = new WeakHashMap<>();
 
     public VeiledEffect() {
         super(MobEffectCategory.BENEFICIAL, 0x8B4FB8);
@@ -36,9 +39,10 @@ public class VeiledEffect extends MobEffect {
         }
         if (player instanceof ServerPlayer serverPlayer) {
             long now = enderman.level().getGameTime();
-            Long last = LAST_BLINK.get(enderman);
+            Map<UUID, Long> seen = LAST_BLINK.computeIfAbsent(enderman, key -> new HashMap<>());
+            Long last = seen.get(player.getUUID());
             if (last == null || now - last >= BLINK_INTERVAL_TICKS) {
-                LAST_BLINK.put(enderman, now);
+                seen.put(player.getUUID(), now);
                 blink(serverPlayer, enderman);
             }
         }

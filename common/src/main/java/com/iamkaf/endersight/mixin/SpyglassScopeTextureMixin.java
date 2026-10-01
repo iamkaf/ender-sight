@@ -8,7 +8,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 //?}
 import net.minecraft.resources.Identifier;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -22,6 +24,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Gui.class)
 //?}
 public abstract class SpyglassScopeTextureMixin {
+    @Shadow
+    @Final
+    private static Identifier SPYGLASS_SCOPE_LOCATION;
+
     /** ASM's GETSTATIC opcode; ASM itself isn't on the common compile classpath. */
     private static final int GETSTATIC = 178;
 
@@ -33,8 +39,6 @@ public abstract class SpyglassScopeTextureMixin {
     /*@Redirect(method = "renderSpyglassOverlay", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/Gui;SPYGLASS_SCOPE_LOCATION:Lnet/minecraft/resources/Identifier;", opcode = GETSTATIC))
     *///?}
     private Identifier endersight$scopeTexture() {
-        return SpyglassOverlay.isScoping(Minecraft.getInstance().player)
-                ? SpyglassOverlay.SCOPE
-                : Identifier.withDefaultNamespace("textures/misc/spyglass_scope.png");
+        return SpyglassOverlay.isScoping(Minecraft.getInstance().player) ? SpyglassOverlay.SCOPE : SPYGLASS_SCOPE_LOCATION;
     }
 }
