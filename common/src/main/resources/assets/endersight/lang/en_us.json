@@ -1,4 +1,24 @@
 {
-  "key.categories.endersight": "Ender Sight",
-  "key.endersight.endersight": "Toggle Ender Sight"
+  "item.endersight.ender_spyglass": "Ender Spyglass",
+  "item.endersight.attuned_eye": "Attuned Eye",
+  "item.endersight.everlasting_eye": "Everlasting Eye",
+  "item.endersight.ender_mark": "Ender Mark",
+  "item.endersight.seers_pearl": "Seer's Pearl",
+  "item.endersight.ender_veil": "Ender Veil",
+  "block.endersight.watchers_eye": "Watcher's Eye",
+  "effect.endersight.veiled": "Veiled",
+  "tooltip.endersight.attuned.place": "Attuned to %s, %s, %s (%s)",
+  "tooltip.endersight.attuned.player": "Attuned to %s",
+  "message.endersight.ender_mark.no_target": "Nothing in sight to mark",
+  "message.endersight.watchers_eye.mode.players": "Watching for players",
+  "message.endersight.watchers_eye.mode.hostile": "Watching for hostile mobs",
+  "message.endersight.watchers_eye.mode.all": "Watching for everything",
+  "message.endersight.watchers_eye.alerts_on": "Alerts on",
+  "message.endersight.watchers_eye.alerts_off": "Alerts off",
+  "message.endersight.watchers_eye.not_owner": "Only the player who placed this eye can change its alerts",
+  "message.endersight.watchers_eye.alert": "Watcher's Eye at %s, %s, %s sees %s",
+  "overlay.endersight.ender_spyglass.distance": "%s blocks",
+  "overlay.endersight.ender_spyglass.no_target": "Out of range",
+  "overlay.endersight.ender_spyglass.no_room": "No room to land",
+  "overlay.endersight.ender_spyglass.no_pearl": "No Ender Pearls"
 }

@@ -5,28 +5,29 @@
 [![Discord](https://img.shields.io/discord/1207469438719492176?style=for-the-badge&logo=discord&label=DISCORD&color=%235865F2)](https://discord.gg/HV5WgTksaB)
 [![KoFi](https://img.shields.io/badge/KoFi-iamkaf?style=for-the-badge&logo=kofi&logoColor=%2330d1e3&label=Support%20Me&color=%2330d1e3)](https://ko-fi.com/iamkaffe)
 
-Harness the power of the End! When holding an **Ender Pearl** or **Eye of Ender**, you can **see Endermen through walls
-**, revealing their ghostly outlines in the dark. Perfect for hunting Endermen, navigating the End, or just keeping an
-eye on these elusive creatures!
+Ender items that work by sight. Teleport to the spot you're looking at, send Eyes of Ender anywhere you choose, mark
+mobs through walls, and set redstone eyes to keep watch.
 
-### How To Use It
+### Items
 
-Just hold an ender pearl or eye of ender and you'll be able to see endermen through walls.
+- **Ender Spyglass** (Spyglass + Eye of Ender): scope a spot, then let go to teleport there. The scope's eye opens when
+  the jump is ready and shows how far it is. Each jump costs one Ender Pearl and lands like a thrown pearl.
+- **Attuned Eye**: sneak-use an Eye of Ender on a block or a player. When you throw it, it flies there instead of to a
+  stronghold.
+- **Everlasting Eye** (Eye of Ender + Chorus Flower): finds strongholds and never shatters. It can be attuned too.
+- **Ender Mark** (Ender Pearl + Amethyst Shard): mark the block you're looking at for 30 seconds, or a mob or player for
+  15. You and nearby players carrying Ender Marks can see it through walls. A marked player sees an eye open over your
+  head, so they know they've been spotted.
+- **Seer's Pearl** (Ender Pearl + Glow Ink Sac): throw it, and every creature within 8 blocks of where it lands is
+  marked for you for 10 seconds.
+- **Watcher's Eye** (Observer + Eye of Ender): a block that watches up to 16 blocks ahead and outputs redstone while it
+  sees something, stronger the closer it is. Use it to switch between players, hostile mobs, and anything alive.
+  Sneak-use it to turn alerts on or off for the player who placed it.
+- **Ender Veil** (Chorus Fruit + Ender Pearl + Phantom Membrane): eat it, and for 3 minutes Endermen won't react when
+  you look at them.
 
-If the effect is getting in the way you can hit the hotkey (default N) to disable it.
-
-### Current Plan
-
-The development plan is to make the mod more customizable and update it to the latest versions of Minecraft. If you have
-any requests for features or mod compats let me know.
-
-Thank you for the support!
-
-## Pics
-
-![An enderman with a purple outline around it](https://i.kaf.sh/i/7b47a721-4585-4818-af01-95e2f085f11b.png)
-
-![A group of endermen with purple outlines around them](https://i.kaf.sh/i/875db8c4-a153-48d3-87db-9815f79b4526.png)
+Ender Sight runs on Fabric, Forge, and NeoForge for Minecraft 1.21.11 and newer. It needs [Amber](https://modrinth.com/mod/amber)
+and must be installed on both the client and the server.
 
 ## Q&A
 
