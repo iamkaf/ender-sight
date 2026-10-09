@@ -24,9 +24,9 @@ Thank you for the support!
 
 ## Pics
 
-![An enderman with a purple outline around it](https://raw.githubusercontent.com/iamkaf/modresources/refs/heads/main/pages/endersight/screenshot1.png)
+![An enderman with a purple outline around it](https://i.kaf.sh/i/7b47a721-4585-4818-af01-95e2f085f11b.png)
 
-![A group of endermen with purple outlines around them](https://raw.githubusercontent.com/iamkaf/modresources/refs/heads/main/pages/endersight/screenshot2.png)
+![A group of endermen with purple outlines around them](https://i.kaf.sh/i/875db8c4-a153-48d3-87db-9815f79b4526.png)
 
 ## Q&A
 
@@ -43,7 +43,7 @@ A: If enough people request it I'll give it some time, but this really is a 1-ma
 
 A: Yes, no need to give credit or ask.
 
-[![Join our Discord](https://raw.githubusercontent.com/iamkaf/modresources/refs/heads/main/pages/common/discord.png)](https://discord.gg/HV5WgTksaB)
+[![Join our Discord](https://i.kaf.sh/i/045f0e6f-04e7-4326-a471-1aad1ee180eb.png)](https://discord.gg/HV5WgTksaB)
 
 ## Compatibility
 
