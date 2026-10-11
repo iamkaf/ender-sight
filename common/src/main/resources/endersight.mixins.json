@@ -1,12 +1,17 @@
 {
   "required": true,
-  "package": "${mod_group}.mixin",
-  "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
-  "client": [
-    "EntityMixin"
-  ],
+  "package": "com.iamkaf.endersight.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "EndermanMixin",
+    "EyeOfEnderAccessor",
+    "PlayerMixin",
+    "SnowballMixin"
+  ],
+  "client": [
+    "SpyglassOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

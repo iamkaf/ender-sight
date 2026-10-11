@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:spyglass",
+    "minecraft:ender_eye"
+  ],
+  "result": {
+    "id": "endersight:ender_spyglass",
+    "count": 1
+  }
+}
