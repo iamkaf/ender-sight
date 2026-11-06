@@ -1,0 +1,73 @@
+{
+  "variants": {
+    "facing=north,mode=players": {
+      "model": "endersight:block/watchers_eye_players"
+    },
+    "facing=east,mode=players": {
+      "model": "endersight:block/watchers_eye_players",
+      "y": 90
+    },
+    "facing=south,mode=players": {
+      "model": "endersight:block/watchers_eye_players",
+      "y": 180
+    },
+    "facing=west,mode=players": {
+      "model": "endersight:block/watchers_eye_players",
+      "y": 270
+    },
+    "facing=up,mode=players": {
+      "model": "endersight:block/watchers_eye_players",
+      "x": 270
+    },
+    "facing=down,mode=players": {
+      "model": "endersight:block/watchers_eye_players",
+      "x": 90
+    },
+    "facing=north,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile"
+    },
+    "facing=east,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile",
+      "y": 90
+    },
+    "facing=south,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile",
+      "y": 180
+    },
+    "facing=west,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile",
+      "y": 270
+    },
+    "facing=up,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile",
+      "x": 270
+    },
+    "facing=down,mode=hostile": {
+      "model": "endersight:block/watchers_eye_hostile",
+      "x": 90
+    },
+    "facing=north,mode=all": {
+      "model": "endersight:block/watchers_eye_all"
+    },
+    "facing=east,mode=all": {
+      "model": "endersight:block/watchers_eye_all",
+      "y": 90
+    },
+    "facing=south,mode=all": {
+      "model": "endersight:block/watchers_eye_all",
+      "y": 180
+    },
+    "facing=west,mode=all": {
+      "model": "endersight:block/watchers_eye_all",
+      "y": 270
+    },
+    "facing=up,mode=all": {
+      "model": "endersight:block/watchers_eye_all",
+      "x": 270
+    },
+    "facing=down,mode=all": {
+      "model": "endersight:block/watchers_eye_all",
+      "x": 90
+    }
+  }
+}

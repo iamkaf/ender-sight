@@ -1,40 +1,35 @@
 {
-  "schemaVersion": 1,
-  "id": "${mod_id}",
-  "version": "${mod_version}",
-  "name": "${mod_name}",
-  "description": "${mod_description}",
-  "authors": [
-    "${mod_author}"
-  ],
-  "contact": {
-    "homepage": "${mod_page_url}",
-    "issues": "${mod_issue_url}",
-    "sources": "${mod_page_url}"
-  },
-  "license": "${mod_license}",
-  "icon": "assets/${mod_id}/icon.png",
-  "environment": "${mod_fabric_environment}",
-  "entrypoints": {
-    "main": [
-      "${main_entrypoint}"
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
     ],
-    "client": [
-      "${client_entrypoint}"
+    "contact": {
+        "homepage": "https://github.com/iamkaf/ender-sight",
+        "issues": "https://github.com/iamkaf/mod-issues/issues",
+        "sources": "https://github.com/iamkaf/ender-sight"
+    },
+    "license": "${license}",
+    "icon": "icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.iamkaf.endersight.EnderSightFabric"
+        ]
+    },
+    "accessWidener": "${mod_id}.accesswidener",
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
     ],
-    "fabric-datagen": [
-      "${fabric_datagen_entrypoint}"
-    ]
-  },
-  "mixins": [
-    "${mod_id}.mixins.json"
-  ],
-  "depends": {
-    "minecraft": "~${minecraft_version}",
-    "java": ">=21",
-    "fabricloader": ">=${fabric_loader_version}",
-    "fabric-api": "*",
-    "architectury": ">=${architectury_api_version}",
-    "amber": ">=${amber_version}"
-  }
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "amber": ">=${amber_version}",
+        "minecraft": "${fabric_version_range}",
+        "java": ">=${java_version}"
+    }
 }

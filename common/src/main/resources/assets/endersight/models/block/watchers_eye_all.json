@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "endersight:block/watchers_eye_front_all",
+    "south": "endersight:block/watchers_eye_back",
+    "east": "endersight:block/watchers_eye_side",
+    "west": "endersight:block/watchers_eye_side",
+    "up": "endersight:block/watchers_eye_side",
+    "down": "endersight:block/watchers_eye_side",
+    "particle": "endersight:block/watchers_eye_side"
+  }
+}

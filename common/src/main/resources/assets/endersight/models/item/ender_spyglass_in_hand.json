@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/spyglass_in_hand",
+  "textures": {
+    "spyglass": "endersight:item/ender_spyglass_model",
+    "particle": "endersight:item/ender_spyglass_model"
+  }
+}

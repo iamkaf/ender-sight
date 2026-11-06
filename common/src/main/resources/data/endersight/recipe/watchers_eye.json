@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:observer",
+    "minecraft:ender_eye"
+  ],
+  "result": {
+    "id": "endersight:watchers_eye",
+    "count": 1
+  }
+}

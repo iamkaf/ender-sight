@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:ender_pearl",
+    "minecraft:glow_ink_sac"
+  ],
+  "result": {
+    "id": "endersight:seers_pearl",
+    "count": 1
+  }
+}
