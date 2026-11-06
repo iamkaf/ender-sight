@@ -2,6 +2,11 @@ package com.iamkaf.endersight.item;
 
 import com.iamkaf.endersight.ModRegistry;
 import com.iamkaf.endersight.mixin.EyeOfEnderAccessor;
+//? if >=26.2 {
+/*import net.minecraft.advancements.triggers.CriteriaTriggers;
+*///?} else {
+import net.minecraft.advancements.CriteriaTriggers;
+//?}
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -58,6 +63,9 @@ public class SightEyeItem extends Item {
                     false
             );
             target = Optional.ofNullable(stronghold).map(Vec3::atLowerCornerOf);
+            if (stronghold != null) {
+                CriteriaTriggers.USED_ENDER_EYE.trigger(serverPlayer, stronghold);
+            }
         }
         if (target.isEmpty()) {
             EyeFeedback.lost(serverPlayer, this);

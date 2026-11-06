@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball;
 import net.minecraft.world.item.SnowballItem;
 import net.minecraft.world.phys.AABB;
@@ -37,6 +38,7 @@ public class SeersPearlItem extends SnowballItem {
         for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, area, entity -> entity != thrower
                 && entity.isAlive()
                 && !entity.isSpectator()
+                && !(entity instanceof ArmorStand)
                 && entity.distanceToSqr(center) <= RADIUS * RADIUS)) {
             // Marks land as a wave spreading out from the impact.
             int delay = (int) Math.round(Math.sqrt(entity.distanceToSqr(center)) * TICKS_PER_BLOCK);

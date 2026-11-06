@@ -18,6 +18,7 @@ describe.configure({
 
 const KEY_LEFT_SHIFT = 340;
 const Y = 180;
+const SPYGLASS_COOLDOWN_TICKS = 40;
 
 describe("Ender Sight", () => {
   test("Ender Spyglass teleports to the scoped spot and spends a pearl", async (ctx) => {
@@ -41,6 +42,31 @@ describe("Ender Sight", () => {
     // Lands in front of the wall face it was scoping.
     await expect(async () => Math.abs((await player.position()).x - (origin.x + 13.5))).toEventuallyBeLessThan(0.1, { timeout: "3s" });
     expect(countOf(await player.inventory(), "minecraft:ender_pearl")).toBe(1);
+  });
+
+  test("Ender Spyglass dismounts the player like an ender pearl", async (ctx) => {
+    const { commands, player } = ctx;
+    const origin = await arena(ctx, 320);
+    await commands.batch([
+      "/gamemode survival @s",
+      "/effect give @s minecraft:resistance 30 4 true",
+      "/item replace entity @s weapon.mainhand with endersight:ender_spyglass",
+      "/give @s minecraft:ender_pearl 1",
+      `/summon minecraft:pig ${origin.x + 0.5} ${Y} ${origin.z + 2.5} {NoAI:1b,Silent:1b,PersistenceRequired:1b}`,
+      `/fill ${origin.x + 14} ${Y} ${origin.z} ${origin.x + 14} ${Y + 3} ${origin.z + 4} minecraft:stone`,
+    ]);
+    await commands.assert("/ride @s mount @e[type=minecraft:pig,distance=..2,limit=1,sort=nearest]");
+    await aim(ctx, { x: origin.x + 14, y: Y + 1.62, z: origin.z + 2.5 });
+    // Cooldowns belong to the item, not the stack: an earlier jump can still be cooling down.
+    await waitServerTicks(ctx, SPYGLASS_COOLDOWN_TICKS);
+
+    await player.holdUse(true);
+    await waitServerTicks(ctx, 20);
+    await player.holdUse(false);
+
+    // A rider who stayed mounted would be pulled straight back onto the pig.
+    await expect(async () => Math.abs((await player.position()).x - (origin.x + 13.5))).toEventuallyBeLessThan(0.1, { timeout: "3s" });
+    expect(countOf(await player.inventory(), "minecraft:ender_pearl")).toBe(0);
   });
 
   test("Attuned Eye flies to the block it was attuned to", async (ctx) => {
@@ -159,6 +185,7 @@ describe("Ender Sight", () => {
       `/summon minecraft:pig ${landing.x - 1.5} ${Y} ${landing.z + 1.5} {NoAI:1b,Silent:1b,PersistenceRequired:1b}`,
       `/summon minecraft:zombie ${landing.x + 0.5} ${Y} ${landing.z - 1.5} {NoAI:1b,Silent:1b,PersistenceRequired:1b}`,
       `/summon minecraft:zombie ${landing.x + 0.5} ${Y} ${landing.z + 20.5} {NoAI:1b,Silent:1b,PersistenceRequired:1b}`,
+      `/summon minecraft:armor_stand ${landing.x - 1.5} ${Y} ${landing.z - 1.5}`,
       "/item replace entity @s weapon.mainhand with endersight:seers_pearl",
     ]);
 

@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntitySpawnReason;
 //? if >=26.2 {
 /*import net.minecraft.world.entity.EntityTypes;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 //?}
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -18,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpyglassItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -93,7 +96,7 @@ public class EnderSpyglassItem extends SpyglassItem {
         ServerLevel level = (ServerLevel) player.level();
         Vec3 destination = ready.destination();
         // Same landing rules as a thrown ender pearl.
-        if (level.getRandom().nextFloat() < 0.05F && level.isSpawningMonsters()) {
+        if (level.getRandom().nextFloat() < 0.05F && level.isSpawningMonsters() && level.getDifficulty() != Difficulty.PEACEFUL) {
             //? if >=26.2 {
             /*Endermite endermite = EntityTypes.ENDERMITE.create(level, EntitySpawnReason.TRIGGERED);
             *///?} else {
@@ -104,8 +107,10 @@ public class EnderSpyglassItem extends SpyglassItem {
                 level.addFreshEntity(endermite);
             }
         }
-        player.teleportTo(destination.x, destination.y, destination.z);
+        // Like a pearl, the jump dismounts the player and stops their momentum.
+        player.teleport(new TeleportTransition(level, destination, Vec3.ZERO, 0.0F, 0.0F, Relative.ROTATION, TeleportTransition.DO_NOTHING));
         player.resetFallDistance();
+        player.resetCurrentImpulseContext();
         player.hurtServer(level, player.damageSources().enderPearl(), 5.0F);
         level.playSound(null, destination.x, destination.y, destination.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
         player.getCooldowns().addCooldown(spyglass, COOLDOWN_TICKS);
